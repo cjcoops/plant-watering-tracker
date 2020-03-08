@@ -1,5 +1,13 @@
 import Plant from "./Plant"
 
+// query {
+//     plants {
+//       _id
+//       name
+//       waterFrequency
+//     }
+//   }
+
 const PlantsList = () => {
   return (
     <section className="mt-8">

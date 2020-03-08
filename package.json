@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
+    "graphql-toolkit": "^0.7.5",
     "isomorphic-unfetch": "^3.0.0",
     "mongoose": "^5.9.3",
     "next": "9.2.2",
@@ -25,5 +26,7 @@
     "react-dom": "16.13.0",
     "tailwindcss": "^1.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-plugin-import-graphql": "^2.7.0"
+  }
 }

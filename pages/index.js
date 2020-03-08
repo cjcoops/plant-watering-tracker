@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <h1 className="text-5xl text-center">Plant Water Tracker</h1>
+      <h1 className="text-5xl text-center font-bold">Plant Water Tracker</h1>
       {/* <p>{data.sayHello}</p> */}
       <PlantForm />
       <PlantsList />

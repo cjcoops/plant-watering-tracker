@@ -1,0 +1,19 @@
+type Plant {
+  _id: ID!
+  name: String!
+  waterFrequency: Int!
+}
+
+input PlantInput {
+  _id: ID
+  name: String!
+  waterFrequency: Int!
+}
+
+type Mutation {
+  addPlant(plant: PlantInput): Plant
+}
+
+type Query {
+  plants: [Plant]
+}

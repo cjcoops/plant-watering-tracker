@@ -1,19 +1,14 @@
 import { ApolloServer, gql } from "apollo-server-micro"
+import { mergeResolvers, mergeTypeDefs } from "graphql-toolkit"
 import connectDb from "../../lib/mongoose"
 
-const typeDefs = gql`
-  type Query {
-    sayHello: String
-  }
-`
+import { plantsMutations } from "../../api/plants/mutations"
+import { plantsResolvers } from "../../api/plants/resolvers"
+import Plants from "../../api/plants/Plants.graphql"
 
-const resolvers = {
-  Query: {
-    sayHello: () => {
-      return "Hello Level Up!"
-    }
-  }
-}
+const typeDefs = Plants
+
+const resolvers = mergeResolvers([plantsMutations, plantsResolvers])
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers })
 
