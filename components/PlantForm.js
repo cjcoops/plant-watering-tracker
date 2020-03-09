@@ -1,11 +1,25 @@
 import { useState } from "react"
+import gql from "graphql-tag"
+import { useMutation } from "@apollo/react-hooks"
+
+const ADD_PLANT = gql`
+  mutation addPlant($plant: PlantInput) {
+    addPlant(plant: $plant) {
+      _id
+      name
+      waterFrequency
+    }
+  }
+`
 
 const PlantForm = () => {
   const [name, setName] = useState("")
   const [waterFrequency, setWaterFrequency] = useState(5)
+  const [addPlant] = useMutation(ADD_PLANT)
 
   const handleSubmit = event => {
     console.log(name, waterFrequency)
+    addPlant({ name, waterFrequency })
     event.preventDefault()
   }
 
