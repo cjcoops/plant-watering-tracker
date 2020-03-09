@@ -1,7 +1,10 @@
+scalar Date
+
 type Plant {
   _id: ID!
   name: String!
   waterFrequency: Int!
+  lastWatered: Date!
 }
 
 input PlantInput {
@@ -12,6 +15,7 @@ input PlantInput {
 
 type Mutation {
   addPlant(plant: PlantInput): Plant
+  waterPlant(plantId: ID, date: Date): Plant
 }
 
 type Query {

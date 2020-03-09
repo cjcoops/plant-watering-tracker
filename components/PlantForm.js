@@ -1,6 +1,6 @@
 import { useState } from "react"
 import gql from "graphql-tag"
-import { useMutation } from "@apollo/react-hooks"
+import { useMutation, resetApolloContext } from "@apollo/react-hooks"
 
 const ADD_PLANT = gql`
   mutation addPlant($plant: PlantInput) {
@@ -15,12 +15,19 @@ const ADD_PLANT = gql`
 const PlantForm = () => {
   const [name, setName] = useState("")
   const [waterFrequency, setWaterFrequency] = useState(5)
-  const [addPlant] = useMutation(ADD_PLANT)
+
+  const [addPlant] = useMutation(ADD_PLANT, {
+    refetchQueries: ["getPlants"]
+  })
 
   const handleSubmit = event => {
-    console.log(name, waterFrequency)
-    addPlant({ name, waterFrequency })
+    addPlant({ variables: { plant: { name, waterFrequency } } })
     event.preventDefault()
+  }
+
+  const handleReset = () => {
+    setName("")
+    setWaterFrequency(5)
   }
 
   return (
@@ -53,7 +60,7 @@ const PlantForm = () => {
           <div className="inline-block relative w-64">
             <select
               value={waterFrequency}
-              onChange={e => setWaterFrequency(e.target.value)}
+              onChange={e => setWaterFrequency(Number(e.target.value))}
               id="water-frequency"
               className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
             >
@@ -80,14 +87,16 @@ const PlantForm = () => {
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            disabled={!name}
           >
             Submit
           </button>
           <button
-            type="reset"
+            onClick={() => handleReset()}
+            type="button"
             className="ml-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
           >
-            Cancel
+            Clear
           </button>
         </div>
       </form>

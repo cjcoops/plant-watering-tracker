@@ -8,6 +8,7 @@ const GET_PLANTS = gql`
       _id
       name
       waterFrequency
+      lastWatered
     }
   }
 `
@@ -15,7 +16,7 @@ const GET_PLANTS = gql`
 const PlantsList = () => {
   const { data, loading } = useQuery(GET_PLANTS)
   if (loading) return <section />
-  console.log(data)
+  if (!data.plants.length) return <section />
 
   return (
     <section className="mt-8">

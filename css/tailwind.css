@@ -5,5 +5,7 @@
 @import url("https://fonts.googleapis.com/css?family=Mali&display=swap");
 
 html {
-  font-family: "Mali", cursive;
+  font-family: "Mali", "system-ui", -apple-system, "BlinkMacSystemFont",
+    "Segoe UI", "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

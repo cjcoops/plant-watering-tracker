@@ -9,6 +9,10 @@ export const PlantsSchema = new Schema({
   waterFrequency: {
     type: Number,
     required: true
+  },
+  lastWatered: {
+    type: Date,
+    required: true
   }
 })
 
