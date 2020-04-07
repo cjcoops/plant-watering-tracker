@@ -31,7 +31,7 @@ const PlantForm = () => {
   }
 
   return (
-    <section className="mt-8">
+    <section className="mt-8 flex flex-col items-center">
       <h2 className="text-2xl font-medium">Add a new plant</h2>
 
       <form className="mt-6" onSubmit={handleSubmit}>
@@ -50,7 +50,7 @@ const PlantForm = () => {
             className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div>
+        <div className="mt-4">
           <label
             htmlFor="water-frequency"
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -83,10 +83,10 @@ const PlantForm = () => {
             </div>
           </div>
         </div>
-        <div className="mt-4">
+        <div className="mt-4 flex">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
             disabled={!name}
           >
             Submit
@@ -94,7 +94,7 @@ const PlantForm = () => {
           <button
             onClick={() => handleReset()}
             type="button"
-            className="ml-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            className="ml-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-full"
           >
             Clear
           </button>
